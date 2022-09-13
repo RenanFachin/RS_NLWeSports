@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage:{
+        // Fazendo o import do bg-galaxy.png e chamando ele de galaxy
         galaxy: "url('/bg-galaxy.png')"
       },
     },

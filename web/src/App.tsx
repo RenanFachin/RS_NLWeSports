@@ -1,10 +1,14 @@
 // Importando o tailwind
 import './styles/main.css'
 
+// Importando a logo
+import logoImg from './assets/logo-nlw-esports.svg'
+
 function App() {
   return(
-    <div className='w-8 h-8 bg-violet-500'>
-
+    <div className='max-w-[1344px] mx-auto flex flex-col items-center my-20'>
+      {/* Colocando a logo */}
+      <img src={logoImg} />
     </div>
   )
 }
