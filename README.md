@@ -4,9 +4,9 @@
 <br>
 
 # NLW eSports
-O projeto será desenvolvido em três frente: `Back-end`, `Front-end` e `Mobile`
-O `Back-end` será desenvolvido utilizando o nodejs,typescript e express.
-O `Front-end` será desenvolvido utilizando reactJS e typescript.
+O projeto será desenvolvido em três frente: `Back-end`, `Front-end` e `Mobile` <br>
+O `Back-end` será desenvolvido utilizando o nodejs,typescript e express. <br>
+O `Front-end` será desenvolvido utilizando reactJS e typescript. <br>
 O `Mobile` será desenvolvido utilizando reactNative e Expo.
 
 
