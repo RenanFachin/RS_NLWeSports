@@ -1,4 +1,4 @@
-import { View, Image } from 'react-native';
+import { View, Image, FlatList } from 'react-native';
 
 // Importando o logo
 import logoImg from '../../assets/logo-nlw-esports.png'
@@ -28,9 +28,24 @@ export function Home() {
         subtitle="Selecione o game que deseja jogar"
       />
 
+
+
+    <FlatList 
+    data={GAMES}
+    // keyExtractor => diz qual é o dado que será utilizado como chave única
+    keyExtractor={Item => Item.id} // pega o objeto GAMES e diz que cada objeto tem um item e um item.id
+    renderItem={({item}) => (
       <GameCard 
-      data = {GAMES[0]}
+      data = {item}
       />
+    )}
+    showsHorizontalScrollIndicator={false} // retira o scrollbar
+    horizontal // propriedade para deixar a lista na horizontal e não na vertical (valor default)
+    contentContainerStyle={styles.contentList} // Passando um style para o FlatList
+    />
+
+
+
 
     </View>
   );

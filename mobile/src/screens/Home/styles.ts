@@ -11,5 +11,10 @@ export const styles = StyleSheet.create({
     height: 120,
     marginTop: 74,
     marginBottom: 48,
+  },
+  // ContentList vai ser para deixar a lista com espaçamentos no inico e final
+  contentList: {
+    paddingLeft: 32,
+    paddingRight: 64,
   }
 });
