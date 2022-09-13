@@ -6,6 +6,9 @@ module.exports = {
     './index.html'
   ],
   theme: {
+    fontFamily:{
+      sans: ['Inter', 'sans-serif']
+    },
     extend: {
       backgroundImage:{
         // Fazendo o import do bg-galaxy.png e chamando ele de galaxy
