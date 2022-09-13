@@ -6,7 +6,7 @@
 # NLW eSports
 O projeto será desenvolvido em três frente: `Back-end`, `Front-end` e `Mobile` <br>
 O `Back-end` será desenvolvido utilizando o nodejs,typescript e express. <br>
-O `Front-end` será desenvolvido utilizando reactJS e typescript. <br>
+O `Front-end` será desenvolvido utilizando reactJS,typescript e tailwindcss. <br>
 O `Mobile` será desenvolvido utilizando reactNative e Expo.
 
 
@@ -20,6 +20,7 @@ O `Mobile` será desenvolvido utilizando reactNative e Expo.
     <img align="center" alt="Express" height="60" width="70" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg">
     <img align="center" alt="Express" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">
     <img align="center" alt="Express" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
+    <img align="center" alt="Express" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg">
 </div>
 <br>
 
