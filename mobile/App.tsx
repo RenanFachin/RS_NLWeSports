@@ -12,6 +12,7 @@ import {
 
 // Importação do componente Background
 import { Background } from './src/components/Background';
+import { Loading } from './src/components/Loading';
 
 // Importação das Screens
 import { Home } from './src/screens/Home'
@@ -41,7 +42,7 @@ export default function App() {
       {/* Verificando se as fontes já foram inicializadas */}
       {/* Se a fonte já foi carregada = exibir a página HOME */}
       {/* Caso contrário, mostrar um componente de LOADING */}
-      { fontsLoaded ? <Home /> : }
+      { fontsLoaded ? <Home /> : <Loading />}
       
     </Background>
   );
