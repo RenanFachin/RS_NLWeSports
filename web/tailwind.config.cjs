@@ -6,7 +6,11 @@ module.exports = {
     './index.html'
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        galaxy: "url('/bg-galaxy.png')"
+      },
+    },
   },
   plugins: [],
 }
