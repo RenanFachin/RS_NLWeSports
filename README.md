@@ -34,7 +34,7 @@ O `Mobile` será desenvolvido utilizando reactNative e Expo.
 - `Github`
 - `Figma`
 - `Expo`
-
+- `Phospor-react`
 
 ## Instalação
 ```bash
