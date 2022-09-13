@@ -13,8 +13,10 @@ export function Background({ children }: Props){
   return (
     <ImageBackground
     source={backgroundImg} 
-    style={styles.container}>
-        { children }
+    defaultSource={backgroundImg}
+    style={styles.container}
+    >
+      { children }
     </ImageBackground>
   );
 }
