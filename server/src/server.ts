@@ -4,7 +4,10 @@
 // const express = require('express')
 
 // Importando com ECMAScript Module
-import express from 'express'
+import express, { application } from 'express'
+
+// Importando o cors
+import cors from 'cors'
 
 // Importando o prismaClient
 import { PrismaClient } from '@prisma/client'
@@ -17,6 +20,9 @@ const app = express()
 
 // Fazendo o express entender que é possível receber um dado em formato JSON
 app.use(express.json())
+
+// O cors diz quem poderá acessar as infos do backend
+app.use(cors())
 
 const prisma = new PrismaClient({
     log: ['query']
