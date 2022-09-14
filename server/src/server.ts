@@ -9,7 +9,15 @@ import express from 'express'
 // Importando o prismaClient
 import { PrismaClient } from '@prisma/client'
 
+// Fazendo o import da função auxiliar de conversão de horas
+import { convertHourStringToMinutes } from './utils/convert-hour-string-to-minutes'
+import { convertMinutesToHourString } from './utils/convert-minutes-to-hour-string'
+
 const app = express()
+
+// Fazendo o express entender que é possível receber um dado em formato JSON
+app.use(express.json())
+
 const prisma = new PrismaClient({
     log: ['query']
 }) // Faz a conexão com o banco de forma automática
@@ -40,8 +48,32 @@ app.get('/games', async (request, response) => {
 })
 
 // publicando(criando) um novo anúncio
-app.post('/ads', (request, response) => {
-    return response.status(201).json([]) // retornando vazio apenas para não dar erro
+// Sempre que for criar um ad ('/games/:id/ads'), ele precisa receber o id do game  
+app.post('/games/:id/ads', async (request, response) => {
+    // Pegando o game id diretamente da routeparams pelo request.params.id
+    const gameId = request.params.id;
+
+    // acessando o body da requisição
+    const body = request.body;
+
+    // pegando os dados passados pelo request e pelo body e criando um anúncio
+    const ad = await prisma.ad.create({
+        data:{
+            gameId,
+            name: body.name,
+            yearsPlaying: body.yearsPlaying,
+            discord: body.discord,
+            // weekdays é passado como array e aqui será passado separado por virgula (join(','))
+            weekDays: body.weekDays.join(','),
+            // Passando o que vier no body hourStart e hourEnd como parâmetro da função que converte tudo para minutos
+            hourStart: convertHourStringToMinutes(body.hourStart),
+            hourEnd: convertHourStringToMinutes(body.hourEnd),
+            useVoiceChannel: body.useVoiceChannel,
+        }
+    })
+
+
+    return response.status(201).json(ad) // retornando vazio apenas para não dar erro
 })
 
 // Listagem de anúncios POR game
@@ -80,18 +112,31 @@ app.get('/games/:id/ads', async(request, response) => {
             // spread operator em todo o objeto e substituindo apenas o weekdays
             ...ad,
             // Fazendo a separação do weekdays onde tem a vírgula (vai retornar um array e cada posição do array diz qual dia da semana que é)
-            weekDays: ad.weekDays.split(',')
+            weekDays: ad.weekDays.split(','),
+            hourStart: convertMinutesToHourString(ad.hourStart),
+            hourEnd: convertMinutesToHourString(ad.hourEnd),
         }
     }))
 })
 
 
 // Buscar discord pelo ID do anúncio
+app.get('/ads/:id/discord', async (request, response) => {
+    const adId = request.params.id
 
-app.get('/ads/:id/discord', (request, response) => {
-    // const adId = request.params.id
+    //findUniqueOrThrow tenta encontrar um ad com o id ou dispara um erro
+    const ad = await prisma.ad.findUniqueOrThrow({
+        select: {
+            discord: true,
+        },
+        where:{
+            id: adId,
+        }
+    })
 
-    return response.json([])
+    return response.json({
+        discord: ad.discord,
+    })
 })
 
 app.listen(3333)
