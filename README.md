@@ -74,7 +74,7 @@ O `Mobile` será desenvolvido utilizando reactNative e Expo.
   npm i
 
 # Executando o projeto no ambiente de desenvolvimento
-  npm run dev
+  expo start
 ```
 
 ## ✔️ Autores
