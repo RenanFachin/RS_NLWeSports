@@ -1,6 +1,6 @@
 // Importando bibliotecas e dependências
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useRoute } from '@react-navigation/native' // serve para resgatar as infos que vem da rota
+import { useRoute, useNavigation } from '@react-navigation/native' // serve para resgatar as infos que vem da rota
 import { Entypo } from '@expo/vector-icons'
 
 // Importando componente
@@ -20,7 +20,9 @@ import logoImg from '../../assets/logo-nlw-esports.png'
 
 
 export function Game() {
-  
+  // Iniciando o useNavigation
+  const navigation = useNavigation();
+
   // Iniciando o useRoute
   const route = useRoute();
 
@@ -30,12 +32,18 @@ export function Game() {
   const game = route.params as GameParams;
   
 
+  // Criando uma função para a seta de voltar fazer algo
+  function handleGoBack(){
+    // goBack é um método do próprio useNavigation e faz a volta da página
+    navigation.goBack()
+  }
+
   return (
     <Background>
       <SafeAreaView style={styles.container}>
 
         <View style={styles.header}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleGoBack}>
             <Entypo
               name="chevron-thin-left"
               color={THEME.COLORS.CAPTION_300}
