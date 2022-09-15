@@ -21,10 +21,11 @@ export interface DuoCardProps {
 }
 
 interface Props {
-  data: DuoCardProps
+  data: DuoCardProps;
+  onConnect: () => void;
 }
 
-export function DuoCard({data}: Props) {
+export function DuoCard({data, onConnect}: Props) {
   return (
     <View style={styles.container}>
         {/* Padrão: label e valor */}
@@ -58,6 +59,7 @@ export function DuoCard({data}: Props) {
         {/* Botão de se conectar com a pessoa */}
         <TouchableOpacity
           style={styles.button}
+          onPress={onConnect}
         >
           <GameController 
             color={THEME.COLORS.TEXT}

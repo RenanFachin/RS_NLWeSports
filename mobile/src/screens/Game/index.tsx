@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { Heading } from '../../components/Heading';
 import { Background } from '../../components/Background';
 import { DuoCard, DuoCardProps } from '../../components/DuoCard';
-import { View, TouchableOpacity, Image, FlatList } from 'react-native'
+import { View, TouchableOpacity, Image, FlatList, Text } from 'react-native'
 
 // Importando a tipagem necessária dos parâmetros
 import { GameParams } from '../../@types/navigation';
@@ -93,13 +93,22 @@ export function Game() {
           data={duos}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <DuoCard data={item} />
+            <DuoCard 
+            data={item} 
+            onConnect={()=> {}}
+            />
           )}
           horizontal // deixa um ao lado do outro
           style={styles.containerList}
-          contentContainerStyle={styles.contentList} // atribui um estilo para a flatList
+          // Se tem conteudo = styles.contentList. Caso não tenha = styles.emptyListContent
+          contentContainerStyle={[duos.length > 0 ? styles.contentList : styles.emptyListContent]} // atribui um estilo para a flatList
           showsHorizontalScrollIndicator={false} // desativa a barra de rolagem
-
+          // Criando uma condição para quando a lista de anúncios estiver vazia
+          ListEmptyComponent={() => (
+            <Text style={styles.emptyListText}>
+              Não há anúncios publicados para este jogo
+            </Text>
+          )}
         />
 
 
