@@ -2,6 +2,7 @@
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useRoute, useNavigation } from '@react-navigation/native' // serve para resgatar as infos que vem da rota
 import { Entypo } from '@expo/vector-icons'
+import { useEffect, useState } from 'react'
 
 // Importando componente
 import { Heading } from '../../components/Heading';
@@ -21,6 +22,9 @@ import logoImg from '../../assets/logo-nlw-esports.png'
 
 
 export function Game() {
+  // Criando um estado para atualização da API
+  const [duos, setDuos] = useState([])
+
   // Iniciando o useNavigation
   const navigation = useNavigation();
 
@@ -38,6 +42,16 @@ export function Game() {
     // goBack é um método do próprio useNavigation e faz a volta da página
     navigation.goBack()
   }
+
+  // Deixando a requisição de forma dinâmica
+  // Se o jogo tiver um anúncio, ele retornará um array com dados. Caso contrário, retornará vazio o array
+  useEffect(()=>{
+    fetch(`192.168.1.107:3333/games/${game.id}/ads`)
+      .then(response => response.json())
+      .then(data => {
+         console.log(data)
+      })
+  },[])
 
   return (
     <Background>
