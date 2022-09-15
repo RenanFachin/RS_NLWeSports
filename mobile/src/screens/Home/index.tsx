@@ -1,25 +1,23 @@
 import { View, Image, FlatList } from 'react-native';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // Importando o logo
 import logoImg from '../../assets/logo-nlw-esports.png'
 
 // Importação de componentes
 import { Heading } from '../../components/Heading';
-import { GameCard } from '../../components/GameCard';
-
-// Importando a coleção de objetos
-import { GAMES } from '../../utils/games';
+import { GameCard, GameCardProps } from '../../components/GameCard';
 
 // Importação dos styles desta página
 import { styles } from './styles';
 
 export function Home() {
+  const [games, setGames] = useState<GameCardProps[]>([])
 
   useEffect(()=>{
     fetch('192.168.1.107:3333/games')
-      .then(response => response.json)
-      .then(data => console.log(data))
+      .then(response => response.json())
+      .then(data => setGames(data))
   },[])
 
   return (
@@ -39,7 +37,8 @@ export function Home() {
 
 
     <FlatList 
-    data={GAMES}
+    // Utilizando o state de "games" para gerar a listagem
+    data={games}
     // keyExtractor => diz qual é o dado que será utilizado como chave única
     keyExtractor={Item => Item.id} // pega o objeto GAMES e diz que cada objeto tem um item e um item.id
     renderItem={({item}) => (
