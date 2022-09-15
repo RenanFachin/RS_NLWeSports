@@ -56,12 +56,16 @@ function App() {
       {/* Jogos */}
       <div className='grid grid-cols-6 gap-6 mt-16'>
 
-        <GameBanner banenrUrl={game1} title='League of Legends' adsCount={5} /> 
-        <GameBanner banenrUrl={game2} title='Dota 2' adsCount={3} /> 
-        <GameBanner banenrUrl={game3} title='CS:GO' adsCount={1} /> 
-        <GameBanner banenrUrl={game4} title='Apex' adsCount={10} /> 
-        <GameBanner banenrUrl={game5} title='Fortnite' adsCount={5} /> 
-        <GameBanner banenrUrl={game6} title='World of Warcraft' adsCount={5} /> 
+        {/* Método MAP para percorrer um array e ir plotando os games que são retornados da API */}
+        {games.map(game => {
+          return(
+            <GameBanner 
+            title= {game.title} 
+            bannerUrl={game.bannerUrl} 
+            adsCount={game._count.ads} /> 
+          )
+        })}
+
 
       </div>
 

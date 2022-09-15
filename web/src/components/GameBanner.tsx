@@ -1,6 +1,6 @@
 // Tudo o que vai variar de um componente para outro
 interface GameBannerProps {
-    banenrUrl: string;
+    bannerUrl: string;
     title: string;
     adsCount: number;
 }
@@ -8,7 +8,7 @@ interface GameBannerProps {
 export function GameBanner(props: GameBannerProps){
     return(
         <a href="" className='relative rounded-lg overflow-hidden'>
-            <img src={props.banenrUrl} alt="" />
+            <img src={props.bannerUrl} alt="" />
 
             <div className='w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0 right-0'>
                 <strong className='text-white block'>
