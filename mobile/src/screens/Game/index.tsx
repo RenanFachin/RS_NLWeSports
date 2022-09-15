@@ -95,6 +95,11 @@ export function Game() {
           renderItem={({ item }) => (
             <DuoCard data={item} />
           )}
+          horizontal // deixa um ao lado do outro
+          style={styles.containerList}
+          contentContainerStyle={styles.contentList} // atribui um estilo para a flatList
+          showsHorizontalScrollIndicator={false} // desativa a barra de rolagem
+
         />
 
 
