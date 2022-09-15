@@ -59,7 +59,8 @@ function App() {
         {/* Método MAP para percorrer um array e ir plotando os games que são retornados da API */}
         {games.map(game => {
           return(
-            <GameBanner 
+            <GameBanner
+            key={game.id} 
             title= {game.title} 
             bannerUrl={game.bannerUrl} 
             adsCount={game._count.ads} /> 
