@@ -1,14 +1,23 @@
 // Importando bibliotecas e dependências
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useRoute } from '@react-navigation/native' // serve para resgatar as infos que vem da rota
+import { Entypo } from '@expo/vector-icons'
 
 // Importando componente
+import { Heading } from '../../components/Heading';
 import { Background } from '../../components/Background';
-
-import { styles } from './styles';
+import { View, TouchableOpacity, Image } from 'react-native'
 
 // Importando a tipagem necessária dos parâmetros
 import { GameParams } from '../../@types/navigation';
+
+// Importando os estilos
+import { THEME } from '../../theme';
+import { styles } from './styles';
+
+// Importando imagem que será utilizada
+import logoImg from '../../assets/logo-nlw-esports.png'
+
 
 export function Game() {
   
@@ -19,11 +28,36 @@ export function Game() {
   // É necessário criar uma tipagem para que ele possa saber os parâmetros que ele recebe
   // as GameParams faz ele buscar na @types/navigation.d.ts a tipagem
   const game = route.params as GameParams;
-  console.log(game)
+  
 
   return (
     <Background>
       <SafeAreaView style={styles.container}>
+
+        <View style={styles.header}>
+          <TouchableOpacity>
+            <Entypo
+              name="chevron-thin-left"
+              color={THEME.COLORS.CAPTION_300}
+              size={20}
+            />
+          </TouchableOpacity>
+
+          <Image 
+            source={logoImg}
+            style={styles.logo}
+          />
+
+          <View style={styles.right}>
+            {/* Esta view vazia é um "hack" para gerar uma terceira posição e o space-between deixar a logo ao centro da tela */}
+          </View>
+        </View>
+
+        <Heading 
+          // O title vai pegar dos parâmetros enviados pela rota de navegação
+          title={game.title}
+          subtitle='Conecte-se e comece a jogar!'
+        />
 
       </SafeAreaView>
     </Background>
