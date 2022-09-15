@@ -6,6 +6,7 @@ import { Entypo } from '@expo/vector-icons'
 // Importando componente
 import { Heading } from '../../components/Heading';
 import { Background } from '../../components/Background';
+import { DuoCard } from '../../components/DuoCard';
 import { View, TouchableOpacity, Image } from 'react-native'
 
 // Importando a tipagem necessária dos parâmetros
@@ -73,6 +74,8 @@ export function Game() {
           title={game.title}
           subtitle='Conecte-se e comece a jogar!'
         />
+
+        <DuoCard />
 
       </SafeAreaView>
     </Background>
