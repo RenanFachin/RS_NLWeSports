@@ -4,6 +4,9 @@ import './styles/main.css'
 // Importando a logo
 import logoImg from './assets/logo-nlw-esports.svg'
 
+// Importando componentes
+import { GameBanner } from './components/GameBanner'
+
 // Importando as imagens dos jogos (provisóriamente)
 import game1 from './assets/game-1.png'
 import game2 from './assets/game-2.png'
@@ -30,64 +33,12 @@ function App() {
       {/* Jogos */}
       <div className='grid grid-cols-6 gap-6 mt-16'>
 
-        <a href="" className='relative rounded-lg overflow-hidden'>
-          <img src={game1} alt="" />
-
-          <div className='w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0 right-0'>
-            <strong className='text-white block'>League of Legends</strong>
-            <span className='text-zinc-300 font-sm block'>4 anúncios</span>
-          </div>
-        </a>          
-
-        <a href="" className='relative rounded-lg overflow-hidden'>
-          <img src={game2} alt="" />
-
-          <div className='w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0 right-0'>
-            <strong className='text-white block'>Dota 2</strong>
-            <span className='text-zinc-300 font-sm block'>4 anúncios</span>
-          </div>
-          
-        </a>
-
-        <a href="" className='relative rounded-lg overflow-hidden'>
-          <img src={game3} alt="" />
-
-          <div className='w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0 right-0'>
-            <strong className='text-white block'>Counter Strike</strong>
-            <span className='text-zinc-300 font-sm block'>4 anúncios</span>
-          </div>
-    
-        </a>
-
-        <a href="" className='relative rounded-lg overflow-hidden'>
-          <img src={game4} alt="" />
-
-          <div className='w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0 right-0'>
-            <strong className='text-white block'>Apex Legends</strong>
-            <span className='text-zinc-300 font-sm block'>4 anúncios</span>
-          </div>
-    
-        </a>
-
-        <a href="" className='relative rounded-lg overflow-hidden'>
-          <img src={game5} alt="" />
-
-          <div className='w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0 right-0'>
-            <strong className='text-white block'>Fortnite</strong>
-            <span className='text-zinc-300 font-sm block'>4 anúncios</span>
-          </div>
-    
-        </a>
-
-        <a href="" className='relative rounded-lg overflow-hidden'>
-          <img src={game6} alt="" />
-
-          <div className='w-full pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 left-0 right-0'>
-            <strong className='text-white block'>World of Warcraft</strong>
-            <span className='text-zinc-300 font-sm block'>4 anúncios</span>
-          </div>
-  
-        </a>
+        <GameBanner banenrUrl={game1} title='League of Legends' adsCount={5} /> 
+        <GameBanner banenrUrl={game2} title='Dota 2' adsCount={3} /> 
+        <GameBanner banenrUrl={game3} title='CS:GO' adsCount={1} /> 
+        <GameBanner banenrUrl={game4} title='Apex' adsCount={10} /> 
+        <GameBanner banenrUrl={game5} title='Fortnite' adsCount={5} /> 
+        <GameBanner banenrUrl={game6} title='World of Warcraft' adsCount={5} /> 
 
       </div>
 
