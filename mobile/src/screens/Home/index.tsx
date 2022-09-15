@@ -1,6 +1,9 @@
 import { View, Image, FlatList } from 'react-native';
 import { useEffect, useState } from 'react';
 
+// Importando bibliotecas e dependências
+import { SafeAreaView } from 'react-native-safe-area-context'
+
 // Importando o logo
 import logoImg from '../../assets/logo-nlw-esports.png'
 
@@ -21,7 +24,7 @@ export function Home() {
   },[])
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
 
       <Image 
         source={logoImg}
@@ -54,6 +57,6 @@ export function Home() {
 
 
 
-    </View>
+    </SafeAreaView>
   );
 }
