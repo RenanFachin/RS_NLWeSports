@@ -77,12 +77,17 @@ function App() {
           <Dialog.Content className='fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25'>
             <Dialog.Title className='text-3xl font-black'>Publique um anúncio</Dialog.Title>
 
-            <Dialog.Content>
-              <form>
-                <div>
+
+              <form className='mt-8'>
+
+                <div className='flex flex-col gap-2'>
                    {/* htmlFor do label precisa ser igual ao id do input */}
-                  <label htmlFor="game">Qual o game?</label>
-                  <input id="game" placeholder='Selecione o game que deseja jogar'/>
+                  <label htmlFor="game" className='font-semibold'>Qual o game?</label>
+                  <input 
+                    id="game" 
+                    placeholder='Selecione o game que deseja jogar'
+                    className='bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500'
+                    />
                 </div>
 
                 <div>
@@ -129,7 +134,7 @@ function App() {
                   </button>
                 </footer>
               </form>
-            </Dialog.Content>
+
 
           </Dialog.Content>
         </Dialog.Portal>
