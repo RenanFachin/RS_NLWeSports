@@ -13,6 +13,7 @@ import logoImg from './assets/logo-nlw-esports.svg'
 // Importando componentes
 import { GameBanner } from './components/GameBanner'
 import { CreateAdBanner } from './components/CreateAdBanner'
+import { Input } from './components/Form/Input'
 
 // Importando icons do phosphor-react
 import { GameController } from 'phosphor-react'
@@ -83,11 +84,10 @@ function App() {
                 <div className='flex flex-col gap-2'>
                    {/* htmlFor do label precisa ser igual ao id do input */}
                   <label htmlFor="game" className='font-semibold'>Qual o game?</label>
-                  <input 
-                    id="game" 
-                    placeholder='Selecione o game que deseja jogar'
-                    className='bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500'
-                    />
+                  <Input 
+                  id='game'
+                  placeholder='Selecione o game que deseja jogar'
+                  />
                 </div>
 
                 <div>
