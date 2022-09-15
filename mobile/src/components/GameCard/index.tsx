@@ -1,4 +1,4 @@
-import { TouchableOpacity, TouchableOpacityProps, ImageBackground, ImageSourcePropType, Text } from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps, ImageBackground, Text } from 'react-native';
 // TouchableOpacity torna a região clicável
 
 import { styles } from './styles';
@@ -10,9 +10,11 @@ import { THEME } from '../../theme';
 // Esta interface vai ser exportada para o local que o componente vai ter o seu uso
 export interface GameCardProps {
     id: string;
-    name: string;
-    ads: string;
-    cover: ImageSourcePropType;
+    title: string;
+    _cont:{
+      ads: number;
+    }
+    bannerUrl: string;
 }
 
 // Esta intercace é apenas para uso "interno" do componente GameCard
@@ -30,7 +32,8 @@ export function GameCard({data, ...rest}: Props) {
         <ImageBackground
         style={styles.cover}
         // recebendo as imagens de forma dinâmica
-        source={data.cover}
+        // source espera um arquivo, para contornar isto, é necessário fazer {{uri: ....}}
+        source={{uri: data.bannerUrl}}
         >
 
       {/* O linearGradient recebe algumas propriedades para gerar o gradiente */}
@@ -40,11 +43,11 @@ export function GameCard({data, ...rest}: Props) {
       >
 
         <Text style={styles.name}>
-          {data.name}
+          {data.title}
         </Text>
 
         <Text style={styles.ads}>
-          {data.ads} anúncios
+          {data._cont.ads} anúncios
         </Text>
 
       </LinearGradient>
