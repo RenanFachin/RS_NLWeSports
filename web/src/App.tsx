@@ -67,6 +67,19 @@ function App() {
 
       <Dialog.Root>
         <CreateAdBanner />
+
+        <Dialog.Portal>
+          <Dialog.Overlay />
+
+          <Dialog.Content>
+            <Dialog.Title>Publique um anúncio</Dialog.Title>
+
+            <Dialog.Content>
+              teste
+            </Dialog.Content>
+
+          </Dialog.Content>
+        </Dialog.Portal>
       </Dialog.Root>
 
     </div>
