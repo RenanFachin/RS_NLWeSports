@@ -61,6 +61,13 @@ export function Game() {
           </View>
         </View>
 
+        <Image
+          // Pegando o parâmetro passado pela rota de navegação
+          source={{uri: game.bannerUrl}}
+          style={styles.cover}
+          resizeMode="cover" // Faz sempre a imagem encaixar no local desejado
+        />
+
         <Heading 
           // O title vai pegar dos parâmetros enviados pela rota de navegação
           title={game.title}

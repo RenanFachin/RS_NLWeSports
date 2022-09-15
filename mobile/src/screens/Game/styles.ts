@@ -25,5 +25,12 @@ export const styles = StyleSheet.create({
     // Aqui vão as mesmas medidas do ícone para garantir que vai ficar centralizado o logo
     width: 20,
     height: 20,
+  },
+  cover: {
+    width: 311,
+    height: 160,
+    borderRadius: 8,
+    marginTop: 32,
+    
   }
 });
