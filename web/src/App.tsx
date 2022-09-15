@@ -19,17 +19,26 @@ import game4 from './assets/game-4.png'
 import game5 from './assets/game-5.png'
 import game6 from './assets/game-6.png'
 
+//  Interface de como vem os dados da API
+interface Game {
+  id: string;
+  title: string;
+  bannerUrl: string;
+  _count: {
+    ads: number;
+  }
+}
 
 function App() {
   // Este código será executado sempre que o componente for exibido em tela
-  const [games, setGames] = useState([])
+  const [games, setGames] = useState<Game[]>([])
 
   // Fazendo a chamada para a API
   useEffect(() => {
     fetch('http://localhost:3333/games')
       .then(response => response.json()) // transformando os dados que vieram da api em JSON
       .then(data => {
-        console.log(data) // Printando todos os dados que vieram em formato de json na tela
+        setGames(data)
       })
   },[])
 
