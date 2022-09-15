@@ -5,28 +5,39 @@ import { DuoInfo } from '../DuoInfo';
 // Importanto regras de estilização
 import { styles } from './styles';
 
-// Criando uma interface para os dados recebidos do backend da aplicação
+// Criando uma interface de definição de tipagem para os dados recebidos do backend da aplicação
 export interface DuoCardProps {
-
+  id: string;
+  hourEnd: string;
+  hourStart: string;
+  name: string;
+  useVoiceChannel: boolean;
+  weekDays: string[];
+  yearsPlaying: number;
 }
 
-export function DuoCard() {
+interface Props {
+  data: DuoCardProps
+}
+
+export function DuoCard({data}: Props) {
   return (
     <View style={styles.container}>
         {/* Padrão: label e valor */}
         <DuoInfo 
           label='Nome'
-          value='Renan'
+          value={data.name}
         />
 
         <DuoInfo 
           label='Tempo de jogo'
-          value='2 anos'
+          value={`${data.yearsPlaying} anos`}
         />
 
         <DuoInfo 
           label='Disponibilidade'
-          value='3 dias - 18h - 20h'
+          // data.weekDays.length vai retornar o tamanho do array e por tabela, o números de dias disponíveis da pessoa para jogar
+          value={`${data.weekDays.length} dias`}
         />
 
         <DuoInfo 

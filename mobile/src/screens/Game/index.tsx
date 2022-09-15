@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react'
 // Importando componente
 import { Heading } from '../../components/Heading';
 import { Background } from '../../components/Background';
-import { DuoCard } from '../../components/DuoCard';
-import { View, TouchableOpacity, Image } from 'react-native'
+import { DuoCard, DuoCardProps } from '../../components/DuoCard';
+import { View, TouchableOpacity, Image, FlatList } from 'react-native'
 
 // Importando a tipagem necessária dos parâmetros
 import { GameParams } from '../../@types/navigation';
@@ -23,7 +23,7 @@ import logoImg from '../../assets/logo-nlw-esports.png'
 
 export function Game() {
   // Criando um estado para atualização da API
-  const [duos, setDuos] = useState([])
+  const [duos, setDuos] = useState<DuoCardProps[]>([])
 
   // Iniciando o useNavigation
   const navigation = useNavigation();
@@ -49,7 +49,7 @@ export function Game() {
     fetch(`192.168.1.107:3333/games/${game.id}/ads`)
       .then(response => response.json())
       .then(data => {
-         console.log(data)
+        setDuos(data)
       })
   },[])
 
@@ -89,7 +89,15 @@ export function Game() {
           subtitle='Conecte-se e comece a jogar!'
         />
 
-        <DuoCard />
+        <FlatList
+          data={duos}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <DuoCard data={item} />
+          )}
+        />
+
+
 
       </SafeAreaView>
     </Background>
