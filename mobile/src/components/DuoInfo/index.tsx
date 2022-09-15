@@ -21,7 +21,10 @@ export function DuoInfo({label, value, colorValue = THEME.COLORS.TEXT }: Props) 
         </Text>
 
         {/* OBS: No reactNative é possível passar mais de uma regra de estilo para os componentes */}
-        <Text style={[styles.value, {color: colorValue}]}>
+        <Text 
+        style={[styles.value, {color: colorValue}]}
+        numberOfLines={1} // Vai definir que só terá 1 linha. Caso não caiba na linha, ele insere automaticamente "..."
+        >
             {value}
         </Text>
     </View>
