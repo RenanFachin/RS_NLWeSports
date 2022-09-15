@@ -1,6 +1,9 @@
 // Importando do phosphor-react os ícones como componentes
 import { MagnifyingGlassPlus } from 'phosphor-react'
 
+// Importando todos os componentes que vem da biblioteca Radix-ui e colocado dentro de um objeto
+import * as Dialog from '@radix-ui/react-dialog'
+
 export function CreateAdBanner(){
     return(
         // Borda do banner em gradient
@@ -19,10 +22,10 @@ export function CreateAdBanner(){
                     </span>
                 </div>
 
-                <button className='py-3 px-4 bg-violet-500 hover:bg-violet-600 text-white rounded flex items-center gap-3'>
+                <Dialog.Trigger className='py-3 px-4 bg-violet-500 hover:bg-violet-600 text-white rounded flex items-center gap-3'>
                     <MagnifyingGlassPlus size={24}/>
                     Publicar anúncio
-                </button>
+                </Dialog.Trigger>
 
             </div>
         </div>

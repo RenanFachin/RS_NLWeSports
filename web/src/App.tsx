@@ -4,20 +4,15 @@ import './styles/main.css'
 // Importações de hooks do react
 import { useState, useEffect } from 'react'
 
+// Importando todos os componentes que vem da biblioteca Radix-ui e colocado dentro de um objeto
+import * as Dialog from '@radix-ui/react-dialog'
+
 // Importando a logo
 import logoImg from './assets/logo-nlw-esports.svg'
 
 // Importando componentes
 import { GameBanner } from './components/GameBanner'
 import { CreateAdBanner } from './components/CreateAdBanner'
-
-// Importando as imagens dos jogos (provisóriamente)
-import game1 from './assets/game-1.png'
-import game2 from './assets/game-2.png'
-import game3 from './assets/game-3.png'
-import game4 from './assets/game-4.png'
-import game5 from './assets/game-5.png'
-import game6 from './assets/game-6.png'
 
 //  Interface de como vem os dados da API
 interface Game {
@@ -70,7 +65,9 @@ function App() {
 
       </div>
 
-      <CreateAdBanner />
+      <Dialog.Root>
+        <CreateAdBanner />
+      </Dialog.Root>
 
     </div>
   )
