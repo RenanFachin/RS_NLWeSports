@@ -185,19 +185,22 @@ function App() {
                 </div>
 
                 <footer className='mt-4 flex justify-end gap-4'>
-                  <button 
-                  type='button'
-                  className='bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600'>
-                    Cancelar
-                  </button>
+                  {/* Dialog.Close faz o botão ter um comportamento de fechar o forms */}
+                  <Dialog.Close 
+                    type='button'
+                    className='bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600'
+                    >
+                      Cancelar
+                  </Dialog.Close>
+
 
                   {/* O botão com type submit é o que faz o envio do formulário */}
                   <button 
-                  type='submit'
-                  className='bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600'
-                  >
-                  <GameController size={24}/>
-                  Encontrar duo
+                    type='submit'
+                    className='bg-violet-500 px-5 h-12 rounded-md font-semibold flex items-center gap-3 hover:bg-violet-600'
+                    >
+                      <GameController size={24}/>
+                      Encontrar duo
                   </button>
                 </footer>
               </form>
