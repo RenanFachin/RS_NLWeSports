@@ -7,6 +7,9 @@ import { Background } from '../../components/Background';
 
 import { styles } from './styles';
 
+// Importando a tipagem necessária dos parâmetros
+import { GameParams } from '../../@types/navigation';
+
 export function Game() {
   
   // Iniciando o useRoute
@@ -14,7 +17,8 @@ export function Game() {
 
   // Pegando os parâmetros que são obtidos e colocando eles na constante game
   // É necessário criar uma tipagem para que ele possa saber os parâmetros que ele recebe
-  const game = route.params;
+  // as GameParams faz ele buscar na @types/navigation.d.ts a tipagem
+  const game = route.params as GameParams;
   console.log(game)
 
   return (
