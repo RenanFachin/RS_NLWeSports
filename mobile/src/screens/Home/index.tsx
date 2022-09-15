@@ -1,4 +1,4 @@
-import { View, Image, FlatList } from 'react-native';
+import { Image, FlatList } from 'react-native';
 import { useEffect, useState } from 'react';
 
 // Importando bibliotecas e dependências

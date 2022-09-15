@@ -1,11 +1,12 @@
-import { View } from 'react-native';
+// Importando bibliotecas e dependências
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { styles } from './styles';
 
 export function Game() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
 
-    </View>
+    </SafeAreaView>
   );
 }
