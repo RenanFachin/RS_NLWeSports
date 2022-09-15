@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 // Importando bibliotecas e dependências
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useNavigation } from '@react-navigation/native'
 
 // Importando o logo
 import logoImg from '../../assets/logo-nlw-esports.png'
@@ -18,6 +19,18 @@ import { styles } from './styles';
 
 export function Home() {
   const [games, setGames] = useState<GameCardProps[]>([])
+
+  // Iniciando a navegação
+  const navigation = useNavigation()
+
+  // Criando uma função para que seja feita a navegação
+  function handleOpenGamePage({ id, title, bannerUrl }: GameCardProps){
+    // .navigate é uma propriedade que o useNavigation possui
+    // Para que ele aceite o game como rota de navegação é preciso ir na @types e criar uma navigation.d.ts
+    // { id, title, bannerUrl } são os parâmetros que a propriedade NAVIGATE recebe
+    navigation.navigate('game', { id, title, bannerUrl })
+  }
+
 
   useEffect(()=>{
     fetch('192.168.1.107:3333/games')
@@ -50,6 +63,11 @@ export function Home() {
     renderItem={({item}) => (
       <GameCard 
       data = {item}
+      // Chamando a função (onPress) e o Onpress é uma propriedade extendida vinda do TouchableOpacityProps
+      // Como o handleOpenGamePage possui parâmetros, temos que chamar ela de uma maneira diferente
+      // {() => handleOpenGamePage}]
+      // Caso não tenha parâtro é só chamar diretamente
+      onPress={() => handleOpenGamePage(item)}
       />
     )}
     showsHorizontalScrollIndicator={false} // retira o scrollbar
