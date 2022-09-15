@@ -1,3 +1,4 @@
+// Importando do phosphor-react os ícones como componentes
 import { MagnifyingGlassPlus } from 'phosphor-react'
 
 export function CreateAdBanner(){

@@ -1,6 +1,9 @@
 // Importando o tailwind
 import './styles/main.css'
 
+// Importações de hooks do react
+import { useState, useEffect } from 'react'
+
 // Importando a logo
 import logoImg from './assets/logo-nlw-esports.svg'
 
@@ -16,16 +19,26 @@ import game4 from './assets/game-4.png'
 import game5 from './assets/game-5.png'
 import game6 from './assets/game-6.png'
 
-// Importando do phosphor-react os ícones como componentes
-import { MagnifyingGlassPlus } from 'phosphor-react'
 
 function App() {
+  // Este código será executado sempre que o componente for exibido em tela
+  const [games, setGames] = useState([])
+
+  // Fazendo a chamada para a API
+  useEffect(() => {
+    fetch('http://localhost:3333/games')
+      .then(response => response.json()) // transformando os dados que vieram da api em JSON
+      .then(data => {
+        console.log(data) // Printando todos os dados que vieram em formato de json na tela
+      })
+  },[])
+
+
   return(
     <div className='max-w-[1344px] mx-auto flex flex-col items-center my-20'>
+
       {/* Colocando a logo */}
-      <img 
-      src={logoImg} 
-      />
+      <img src={logoImg} />
 
       <h1 className='text-6xl text-white font-black mt-20'>
         Seu <span className='bg-nlw-gradient text-transparent bg-clip-text'>duo</span> está aqui
