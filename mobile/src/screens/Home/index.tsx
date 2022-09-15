@@ -10,9 +10,11 @@ import logoImg from '../../assets/logo-nlw-esports.png'
 // Importação de componentes
 import { Heading } from '../../components/Heading';
 import { GameCard, GameCardProps } from '../../components/GameCard';
+import { Background } from '../../components/Background';
 
 // Importação dos styles desta página
 import { styles } from './styles';
+
 
 export function Home() {
   const [games, setGames] = useState<GameCardProps[]>([])
@@ -24,6 +26,7 @@ export function Home() {
   },[])
 
   return (
+    <Background>
     <SafeAreaView style={styles.container}>
 
       <Image 
@@ -55,8 +58,7 @@ export function Home() {
     />
 
 
-
-
     </SafeAreaView>
+    </Background>
   );
 }

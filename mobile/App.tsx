@@ -15,7 +15,10 @@ import { Background } from './src/components/Background';
 import { Loading } from './src/components/Loading';
 
 // Importação das Screens
-import { Home } from './src/screens/Home'
+// import { Home } from './src/screens/Home'
+
+// Importando as rotas
+import { Routes } from './src/routes';
 
 
 export default function App() {
@@ -42,7 +45,7 @@ export default function App() {
       {/* Verificando se as fontes já foram inicializadas */}
       {/* Se a fonte já foi carregada = exibir a página HOME */}
       {/* Caso contrário, mostrar um componente de LOADING */}
-      { fontsLoaded ? <Home /> : <Loading />}
+      { fontsLoaded ? <Routes /> : <Loading />}
       
     </Background>
   );

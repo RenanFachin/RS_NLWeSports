@@ -12,7 +12,9 @@ const { Navigator, Screen } = createNativeStackNavigator()
 
 export function AppRoutes(){
     return(
-        <Navigator>
+        // screenOptions serve para personalizar 
+        // {headerShown: false} = tira o "header"
+        <Navigator screenOptions={{headerShown: false}}>
             <Screen 
                 name="home"
                 component={Home}
