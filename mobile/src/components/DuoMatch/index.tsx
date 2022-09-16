@@ -1,5 +1,5 @@
 // Importando componentes
-import { View, Modal, ModalProps, Text, TouchableOpacity } from 'react-native';
+import { View, Modal, ModalProps, Text, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
 import { Heading } from '../Heading';
 
 // Importando estilos
@@ -10,6 +10,10 @@ import { THEME } from '../../theme';
 import { MaterialIcons } from '@expo/vector-icons'
 import { CheckCircle } from 'phosphor-react-native'
 
+// Importando bibliotecas
+import * as Clipboard from 'expo-clipboard'
+import { useState } from 'react';
+
 interface Props extends ModalProps {
   discord: string;
   // onClose é uma função que tem um retorno vazio (void)
@@ -17,6 +21,25 @@ interface Props extends ModalProps {
 }
 
 export function DuoMatch({ discord, onClose, ...rest }: Props) {
+  
+  // Criando um state para saber se está sendo copiado na memória e mostrar um indicador de loading
+  const [ isCopping, setIsCopping ] = useState(false)
+
+
+  // Criando função para copiar (com a biblioteca clipboard) e para alertar o usuário (componente Alert)  
+  async function handleCopyDiscordUserToClipboard(){
+
+    setIsCopping(true);
+
+    await Clipboard.setStringAsync(discord);
+
+    Alert.alert('Discord copiado!', 'Usuário copiado para facilitar o seu match');
+
+    // Apenas após o alert que será dado como concluido o processo de copiar
+    setIsCopping(false) 
+  }
+
+
   return (
     // Transparent deixa o modal com fundo transparente
     // StatusBarTranslucent faz o modal cobrir também o statusbar do usuário
@@ -49,17 +72,26 @@ export function DuoMatch({ discord, onClose, ...rest }: Props) {
             style={{ alignItems: 'center', marginTop: 24 }}
           />
 
-          {/* Fazendo este texto ser clicável com a ajuda do touchableOpacity */}
-          <TouchableOpacity style={styles.discordButton}>
+
             <Text style={styles.label}>
               Adicione no Discord
             </Text>
+
+
+          {/* Fazendo este texto ser clicável com a ajuda do touchableOpacity */}
+          <TouchableOpacity 
+            style={styles.discordButton}
+            onPress={handleCopyDiscordUserToClipboard}
+            // Se o isCopping ter valor de true, o botão será desabilitado. Desta forma será garantido que o usuário não possa ficar chamando a função diversas vezes com o clique
+            disabled={isCopping}
+          >
+
+            <Text style={styles.discord}>
+              {/* Se o isCopping for true ENTÃO mostrar um componente de loading(ActivityIndicator)*/}
+              {isCopping ? <ActivityIndicator color={THEME.COLORS.PRIMARY} /> : discord}
+              {discord}
+            </Text>
           </TouchableOpacity>
-
-
-          <Text style={styles.discord}>
-            {discord}
-          </Text>
 
         </View>
       </View>
