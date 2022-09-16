@@ -15,6 +15,8 @@ import { GameBanner } from './components/GameBanner'
 import { CreateAdBanner } from './components/CreateAdBanner'
 import { CreateAdModal } from './components/CreateAdModal'
 
+// Importando o axios
+import axios from 'axios'
 
 
 //  Interface de como vem os dados da API
@@ -33,10 +35,9 @@ function App() {
 
   // Fazendo a chamada para a API
   useEffect(() => {
-    fetch('http://localhost:3333/games')
-      .then(response => response.json()) // transformando os dados que vieram da api em JSON
-      .then(data => {
-        setGames(data)
+    axios('http://localhost:3333/games')
+      .then(response => {
+        setGames(response.data)
       })
   },[])
 

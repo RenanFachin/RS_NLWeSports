@@ -12,6 +12,9 @@ import { Input } from './Form/Input'
 // Importações de hooks do react
 import { useState, useEffect, FormEvent } from 'react'
 
+// Importando o axios
+import axios from 'axios'
+
 //  Interface de como vem os dados da API
 interface Game {
     id: string;
@@ -26,22 +29,45 @@ export function CreateAdModal(){
     // Criando um estado para controlar a marcação dos dias
     const [weekDays, setWeekDays] = useState<string[]>([])
 
+    // Criando um estado para controlar a marcação do checkbox
+    const [useVoiceChannel, setUseVoiceChannel] = useState(false)
+
     // Fazendo a chamada para a API
     useEffect(() => {
-    fetch('http://localhost:3333/games')
-      .then(response => response.json()) // transformando os dados que vieram da api em JSON
-      .then(data => {
-        setGames(data)
+    axios('http://localhost:3333/games')
+      .then(response => {
+        setGames(response.data)
       })
     },[])
 
-    function handleCreateAd(event: FormEvent){
+    async function handleCreateAd(event: FormEvent){
         event.preventDefault();
 
         const formData = new FormData(event.target as HTMLFormElement)
         const data = Object.fromEntries(formData)
 
-        console.log(data)
+        // Fazendo a validação dos campos enviados
+        if(!data.name) {
+            return
+        }
+
+        // Fazendo o post para o banco de dados
+        try{
+            await axios.post(`http://localhost:3333/games/${data.game}/ads`, {
+                name: data.name,
+                yearsPlaying: Number(data.yearsPlaying),
+                discord: data.discord,
+                weekDays: weekDays.map(Number),
+                hourStart: data.hourStart,
+                hourEnd: data.hourEnd,
+                useVoiceChannel: useVoiceChannel,
+            })
+
+            alert('Anúncio criado com sucesso')
+        } catch(err) {
+            console.log(err)
+            alert('Erro ao criar um anúncio')
+        }
     }
 
 
@@ -177,7 +203,16 @@ export function CreateAdModal(){
           </div>
 
           <label className='mt-2 flex items-center gap-2 text-sm'>
-           <Checkbox.Root className='w-6 h-6 p-1 rounded bg-zinc-900'>
+           <Checkbox.Root 
+           className='w-6 h-6 p-1 rounded bg-zinc-900' 
+           checked={useVoiceChannel}
+           onCheckedChange={(checked) => {
+            if(checked == true){
+                setUseVoiceChannel(true)
+            } else {
+                setUseVoiceChannel(false)
+            }
+           }}>
                 <Checkbox.Indicator >
                     <Check className='w-4 h-4 text-emerald-400' />
                 </Checkbox.Indicator>
