@@ -120,6 +120,8 @@ export function Game() {
             // Fazendo o visible ser dinâmico
               visible={discordDuoSelected.length > 0}
               discord='teste#123123'
+              onClose={() => setDiscordDuoSelected('')}
+              // Desta forma, ao clicar no x, será atribuido um texto vazio para a variável e consequentemente irá fechar o modal com visible = false
             />
 
       </SafeAreaView>
