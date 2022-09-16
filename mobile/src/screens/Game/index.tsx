@@ -47,6 +47,16 @@ export function Game() {
     navigation.goBack()
   }
 
+  // Função para buscar o usuário conforme o ID do anúncio no banco de dados (API)
+  async function getDiscordUser(adsId: string) {
+    fetch(`192.168.1.107:3333/ads/${adsId}/discord`)
+    .then(response => response.json())
+    .then(data => {
+      // Atribuindo um valor para o estado
+      setDiscordDuoSelected(data)
+    })
+  }
+
   // Deixando a requisição de forma dinâmica
   // Se o jogo tiver um anúncio, ele retornará um array com dados. Caso contrário, retornará vazio o array
   useEffect(()=>{
@@ -99,7 +109,8 @@ export function Game() {
           renderItem={({ item }) => (
             <DuoCard 
             data={item} 
-            onConnect={()=> {}}
+            onConnect={() => getDiscordUser(item.id)}
+            // item.id é o id do anúncio
             />
           )}
           horizontal // deixa um ao lado do outro
