@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { Heading } from '../../components/Heading';
 import { Background } from '../../components/Background';
 import { DuoCard, DuoCardProps } from '../../components/DuoCard';
+import { DuoMatch } from '../../components/DuoMatch';
 import { View, TouchableOpacity, Image, FlatList, Text } from 'react-native'
 
 // Importando a tipagem necessária dos parâmetros
@@ -111,7 +112,11 @@ export function Game() {
           )}
         />
 
-
+            <DuoMatch 
+            // Propriedade visible só existe pelos ...rest
+              visible={true}
+              discord='teste#123123'
+            />
 
       </SafeAreaView>
     </Background>
