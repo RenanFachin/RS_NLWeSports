@@ -26,6 +26,9 @@ export function Game() {
   // Criando um estado para atualização da API
   const [duos, setDuos] = useState<DuoCardProps[]>([])
 
+  // Criando um estado para manipular a propriedade visible do duoMatch
+  const [discordDuoSelected, setDiscordDuoSelected] = useState('')
+
   // Iniciando o useNavigation
   const navigation = useNavigation();
 
@@ -114,7 +117,8 @@ export function Game() {
 
             <DuoMatch 
             // Propriedade visible só existe pelos ...rest
-              visible={true}
+            // Fazendo o visible ser dinâmico
+              visible={discordDuoSelected.length > 0}
               discord='teste#123123'
             />
 
