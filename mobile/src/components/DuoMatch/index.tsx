@@ -20,7 +20,13 @@ export function DuoMatch({ discord, onClose, ...rest }: Props) {
   return (
     // Transparent deixa o modal com fundo transparente
     // StatusBarTranslucent faz o modal cobrir também o statusbar do usuário
-    <Modal {...rest} transparent statusBarTranslucent>
+    <Modal 
+      {...rest} 
+      transparent 
+      statusBarTranslucent
+      animationType='fade'
+      // animationType cria um efeito ao abrir o modal. O padrão do animationtype é slide
+    >
       <View style={styles.container}>
         <View style={styles.content}>
 
