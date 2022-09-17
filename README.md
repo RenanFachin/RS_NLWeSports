@@ -4,10 +4,14 @@
 <br>
 
 # NLW eSports
-O projeto será desenvolvido em três frente: `Back-end`, `Front-end` e `Mobile` <br>
-O `Back-end` será desenvolvido utilizando o nodejs,typescript e express. <br>
-O `Front-end` será desenvolvido utilizando reactJS,typescript e tailwindcss. <br>
-O `Mobile` será desenvolvido utilizando reactNative e Expo.
+Projeto desenvolvido durante a semana NLW da Rocketseat. O projeto será desenvolvido em três frente: `Back-end`, `Front-end` e `Mobile` <br>
+O `Back-end` será desenvolvido utilizando o nodejs, typescript e express. <br>
+O `Front-end` será desenvolvido utilizando reactJS, typescript e tailwindcss. <br>
+O `Mobile` será desenvolvido utilizando reactNative e Expo. <br>
+
+O projeto tem como propósito criar uma aplicação web onde será possível visualizar e criar anúncios para poder encontrar um parceiro para uma jogatina! <br>
+Já a versão mobile, tem também uma funcionalidade para facilitar a conexão entre estas duas pessoas. <br>
+O back-end feito em node, cria uma API própria que será consumida pela web e mobile.
 
 
 <br>
