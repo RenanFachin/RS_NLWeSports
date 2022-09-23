@@ -33,12 +33,12 @@ export function Game() {
   const navigation = useNavigation();
 
   // Iniciando o useRoute
-  const route = useRoute();
+  const router = useRoute();
 
   // Pegando os parâmetros que são obtidos e colocando eles na constante game
   // É necessário criar uma tipagem para que ele possa saber os parâmetros que ele recebe
   // as GameParams faz ele buscar na @types/navigation.d.ts a tipagem
-  const game = route.params as GameParams;
+  const game = router.params as GameParams;
   
 
   // Criando uma função para a seta de voltar fazer algo
@@ -49,18 +49,18 @@ export function Game() {
 
   // Função para buscar o usuário conforme o ID do anúncio no banco de dados (API)
   async function getDiscordUser(adsId: string) {
-    fetch(`192.168.1.107:3333/ads/${adsId}/discord`)
+    fetch(`http://192.168.0.3:3333/ads/${adsId}/discord`)
     .then(response => response.json())
     .then(data => {
       // Atribuindo um valor para o estado
-      setDiscordDuoSelected(data)
+      setDiscordDuoSelected(data.discord)
     })
   }
 
   // Deixando a requisição de forma dinâmica
   // Se o jogo tiver um anúncio, ele retornará um array com dados. Caso contrário, retornará vazio o array
   useEffect(()=>{
-    fetch(`192.168.1.107:3333/games/${game.id}/ads`)
+    fetch(`http://192.168.0.3:3333/games/${game.id}/ads`)
       .then(response => response.json())
       .then(data => {
         setDuos(data)

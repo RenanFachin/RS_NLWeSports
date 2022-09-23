@@ -18,10 +18,10 @@ import { styles } from './styles';
 
 
 export function Home() {
-  const [games, setGames] = useState<GameCardProps[]>([])
+  const [games, setGames] = useState<GameCardProps[]>([]);
 
   // Iniciando a navegação
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   // Criando uma função para que seja feita a navegação
   function handleOpenGamePage({ id, title, bannerUrl }: GameCardProps){
@@ -33,7 +33,7 @@ export function Home() {
 
 
   useEffect(()=>{
-    fetch('192.168.1.107:3333/games')
+    fetch('http://192.168.0.3:3333/games')
       .then(response => response.json())
       .then(data => setGames(data))
   },[])
