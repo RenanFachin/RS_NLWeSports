@@ -2,6 +2,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 // Importando as páginas da aplicação
+import {SignIn} from '../screens/SignIn'
 import {Home} from '../screens/Home'
 import {Game} from '../screens/Game'
 
@@ -15,6 +16,11 @@ export function AppRoutes(){
         // screenOptions serve para personalizar 
         // {headerShown: false} = tira o "header"
         <Navigator screenOptions={{headerShown: false}}>
+            <Screen 
+                name="signIn"
+                component={SignIn}
+            />
+
             <Screen 
                 name="home"
                 component={Home}

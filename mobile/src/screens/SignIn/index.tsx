@@ -1,16 +1,13 @@
 import { Image, TouchableOpacity, Text } from 'react-native';
-import { useEffect, useState } from 'react';
 
 // Importando bibliotecas e dependências
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useNavigation } from '@react-navigation/native'
 
 // Importando o logo
 import logoImg from '../../assets/logo-nlw-esports.png'
 
 // Importação de componentes
 import { Heading } from '../../components/Heading';
-import { GameCard, GameCardProps } from '../../components/GameCard';
 import { Background } from '../../components/Background';
 
 // Importação dos styles desta página
@@ -19,7 +16,7 @@ import { GameController } from 'phosphor-react-native';
 import { THEME } from '../../theme';
 
 
-export function Home() {
+export function SignIn() {
 
   async function handleDiscordSignIn(){
 
@@ -38,7 +35,10 @@ export function Home() {
 
         <TouchableOpacity style={styles.button} onPress={handleDiscordSignIn}>
 
-          <GameController color={THEME.COLORS.TEXT} size={20} />
+          <GameController 
+          color={THEME.COLORS.TEXT} 
+          size={20} 
+          />
 
           <Text style={styles.buttonTittle}>
             Entrar com discord
